@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PFO2 - Prompt Engineering en Agentes de IA</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between">
+
+    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <span class="text-sm font-semibold tracking-wider text-slate-400 uppercase">IFTS N.° 29 — Desarrollo de Sistemas Web (Front End)</span>
+            <span class="text-xs bg-red-500/10 text-red-400 border border-red-500/20 px-2 py-1 rounded-full font-mono">Junio 2026</span>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12 flex-grow flex flex-col justify-center items-center text-center">
+        
+        <div class="mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-amber-400 via-red-500 to-amber-500 bg-clip-text text-transparent mb-4">
+                Prompt Engineering en Agentes de IA
+            </h1>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+                Evaluación y comparación de resolución autónoma de agentes de software para la Landing Page de la compañía de teatro independiente <span class="text-amber-400 font-medium">"En el Acto"</span>.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-3xl mb-12">
+            
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-slate-700 transition group">
+                <div>
+                    <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 mb-4 font-mono font-bold text-lg">01</div>
+                    <h3 class="text-lg font-bold text-slate-200 mb-2 group-hover:text-amber-400 transition">Prompt Utilizado</h3>
+                    <p class="text-sm text-slate-400 mb-6">Texto plano del megaprompt de alta precisión diseñado bajo lineamientos oficiales.</p>
+                </div>
+                <button onclick="openModal()" class="w-full inline-flex justify-center items-center bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-medium py-2.5 px-4 rounded-lg transition cursor-pointer">
+                    Ver Texto Plano
+                </button>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-red-500/30 transition group">
+                <div>
+                    <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 mb-4 font-mono font-bold text-lg">02</div>
+                    <h3 class="text-lg font-bold text-slate-200 mb-2 group-hover:text-red-400 transition">Agente OpenCode</h3>
+                    <p class="text-sm text-slate-400 mb-1">Modelo de lenguaje:</p>
+                    <span class="inline-block text-xs bg-slate-800 text-slate-300 font-mono px-2 py-0.5 rounded mb-6">DeepSeek V4 Flash Free</span>
+                </div>
+                <a href="./OpenCode/index.html" class="w-full inline-flex justify-center items-center bg-red-600 hover:bg-red-500 text-white text-sm font-semibold py-2.5 px-4 rounded-lg shadow-lg shadow-red-600/10 transition">
+                    Ver Landing Page
+                </a>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-sky-500/30 transition group">
+                <div>
+                    <div class="w-10 h-10 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-400 mb-4 font-mono font-bold text-lg">03</div>
+                    <h3 class="text-lg font-bold text-slate-200 mb-2 group-hover:text-sky-400 transition">Agente Cursor</h3>
+                    <p class="text-sm text-slate-400 mb-1">Modelo de lenguaje:</p>
+                    <span class="inline-block text-xs bg-slate-800 text-slate-300 font-mono px-2 py-0.5 rounded mb-6">Composer 2.5 Fast</span>
+                </div>
+                <a href="./Cursor/index.html" class="w-full inline-flex justify-center items-center bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold py-2.5 px-4 rounded-lg shadow-lg shadow-sky-600/10 transition">
+                    Ver Landing Page
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <div id="promptModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl">
+            <div class="p-4 border-b border-slate-800 flex justify-between items-center bg-slate-900/50">
+                <h3 class="font-bold text-lg text-slate-200">Prompt Único de Alta Precisión</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-200 text-2xl font-semibold leading-none cursor-pointer">&times;</button>
+            </div>
+            <div class="p-6 overflow-y-auto font-mono text-xs text-slate-300 bg-slate-950/50 text-left whitespace-pre-wrap select-all">CONTEST / ROLE:
+You are an expert Senior Frontend Developer and UI/UX Designer. Your task is to autonomously generate a complete, production-ready, single-page Landing Page for an Independent Theater and Improvisation Workshop Company named "En el Acto".
+
+TECHNICAL STACK & CONSTRAINTS:
+- Use clean, modern, semantic HTML5 and CSS3.
+- To ensure a highly professional and modern visual design without manual intervention, you MUST use Tailwind CSS via CDN linked in the &lt;head&gt;.
+- Do not use any external custom JavaScript files or backend dependencies. 
+- If interactive elements (like mobile menu toggles) are needed, implement them using simple, inline vanilla JavaScript within a &lt;script&gt; tag at the bottom.
+- The layout must be 100% responsive (mobile-first approach) and look flawless on mobile, tablet, and desktop viewports.
+- All images must use high-quality, reliable placeholders from Unsplash (e.g., https://images.unsplash.com/... using terms like "theater", "stage", "acting").
+- DO NOT leave any placeholder text like "Lorem Ipsum". Write realistic, engaging copy in Spanish.
+
+DESIGN SYSTEM & AESTHETICS:
+- Vibe: Artistic, dramatic, modern, and welcoming.
+- Palette: 
+  * Primary: Deep Charcoal / Dark Slate (Backgrounds to simulate a theater stage environment).
+  * Secondary: Vibrant Crimson Red or Warm Amber/Gold (For Call-To-Actions, highlights, and dramatic accents).
+  * Text: Crisp White and Light Gray for readability.
+- Typography: Sans-serif, bold headers for high contrast and clean body text.
+
+REQUIRED STRUCTURE (7 MANDATORY SECTIONS):
+Your output must contain a single index.html file with the following sections clearly structured:
+
+1. HEADER (Navigation Bar):
+   - Company logo/name ("En el Acto - Teatro Independiente").
+   - Clean navigation menu with smooth-scroll links to: Inicio, Talleres, Nosotros, Testimonios, Contacto.
+   - Fully responsive (hamburger menu on mobile).
+
+2. HERO SECTION:
+   - A striking, full-width or split layout background with a dramatic theater-related image.
+   - High-impact headline: "El arte de crear en el momento. Descubrí tu potencial arriba del escenario."
+   - Subheadline: "Talleres de teatro, actuación e improvisación para todos los niveles. No se requiere experiencia previa."
+   - Primary Call-To-Action (CTA) Button: "Quiero Inscribirme" (styled with the accent color, hover effects, and a smooth transition).
+
+3. DESCRIPTION / ABOUT US ("Sobre Nosotros"):
+   - A compelling narrative about the company's philosophy: exploring creativity, losing stage fright, and building community through performing arts.
+   - Side-by-side layout (text and an inspiring image of a theater rehearsal or stage lights).
+
+4. SERVICES / FEATURES ("Nuestros Talleres"):
+   - Grid layout (3 columns on desktop) displaying the core offerings:
+     a) "Teatro Inicial e Improvisación": Focus on spontaneity, playfulness, and confidence.
+     b) "Montaje Obra / Avanzados": For those wanting to experience building a play from scratch to the final premiere.
+     c) "Entrenamiento Actoral": Focus on body language, voice projection, and emotional depth.
+   - Each card must include a relevant icon or small image, a short description, and schedule hints.
+
+5. TESTIMONIALS ("Reseñas de Alumnos"):
+   - A visually appealing grid or list with at least 3 realistic testimonials from students.
+   - Include student names, a small placeholder avatar image, and enthusiastic quotes about how the workshop changed their confidence and creative life.
+
+6. CONTACT FORM ("Sumate a la Compañía"):
+   - A beautiful, centered contact card.
+   - Input fields: Full Name, Email, Workshop of Interest (Dropdown select), and Message.
+   - Visual submit button ("Enviar Consulta") with hover states. Note: No backend functionality required, just the visual layout.
+
+7. FOOTER:
+   - Copyright notice: "© 2026 En el Acto Teatro Independiente. Todos los derechos reservados."
+   - Social media icon links (Placeholder links to Instagram, Facebook, YouTube) styled cleanly.
+
+OUTPUT REQUIREMENT:
+Generate the entire code in one single block. Ensure every section is visually distinguished with appropriate spacing (padding/margin), clean alignment, and professional design choices. Do not truncate the code.</div>
+            <div class="p-4 border-t border-slate-800 flex justify-end bg-slate-900/50">
+                <button onclick="closeModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-medium py-2 px-4 rounded-lg transition cursor-pointer">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-t border-slate-900 bg-slate-950 py-6 text-center text-xs text-slate-500">
+        <p>© 2026 — Desarrollado para la materia Desarrollo de Sistemas Web (Front End).</p>
+    </footer>
+
+    <script>
+        function openModal() {
+            document.getElementById('promptModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('promptModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>

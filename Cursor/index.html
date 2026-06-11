@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="En el Acto - Talleres de teatro, actuación e improvisación para todos los niveles. Descubrí tu potencial arriba del escenario.">
+  <title>En el Acto — Teatro Independiente e Improvisación</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            stage: {
+              950: '#0a0a0f',
+              900: '#12121a',
+              800: '#1a1a26',
+              700: '#252533',
+            },
+            crimson: {
+              DEFAULT: '#c41e3a',
+              light: '#e63950',
+              dark: '#9a1830',
+            },
+            amber: {
+              accent: '#d4a017',
+              light: '#f0c040',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(10, 10, 15, 0.92) 0%, rgba(18, 18, 26, 0.75) 50%, rgba(196, 30, 58, 0.25) 100%);
+    }
+    .card-glow:hover {
+      box-shadow: 0 0 30px rgba(196, 30, 58, 0.15);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #ffffff 0%, #d4a017 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #c41e3a;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="bg-stage-950 text-gray-100 font-sans antialiased">
+
+  <!-- ========== HEADER ========== -->
+  <header id="inicio" class="fixed top-0 left-0 right-0 z-50 bg-stage-950/90 backdrop-blur-md border-b border-stage-700/50">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <!-- Logo -->
+        <a href="#inicio" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-crimson to-amber-accent flex items-center justify-center shadow-lg shadow-crimson/20 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <div class="leading-tight">
+            <span class="block text-lg font-bold text-white tracking-tight">En el Acto</span>
+            <span class="block text-xs text-gray-400 font-medium tracking-wider uppercase">Teatro Independiente</span>
+          </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#inicio" class="nav-link relative text-sm font-medium text-gray-300 hover:text-white transition-colors">Inicio</a>
+          <a href="#talleres" class="nav-link relative text-sm font-medium text-gray-300 hover:text-white transition-colors">Talleres</a>
+          <a href="#nosotros" class="nav-link relative text-sm font-medium text-gray-300 hover:text-white transition-colors">Nosotros</a>
+          <a href="#testimonios" class="nav-link relative text-sm font-medium text-gray-300 hover:text-white transition-colors">Testimonios</a>
+          <a href="#contacto" class="inline-flex items-center px-5 py-2.5 rounded-full bg-crimson hover:bg-crimson-light text-white text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-crimson/30 hover:-translate-y-0.5">Contacto</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-toggle" type="button" class="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-stage-800 transition-colors" aria-label="Abrir menú" aria-expanded="false">
+          <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Nav -->
+      <div id="mobile-menu" class="hidden md:hidden pb-6">
+        <div class="flex flex-col gap-1 pt-2 border-t border-stage-700/50">
+          <a href="#inicio" class="mobile-nav-link px-4 py-3 rounded-lg text-gray-300 hover:text-white hover:bg-stage-800 transition-colors font-medium">Inicio</a>
+          <a href="#talleres" class="mobile-nav-link px-4 py-3 rounded-lg text-gray-300 hover:text-white hover:bg-stage-800 transition-colors font-medium">Talleres</a>
+          <a href="#nosotros" class="mobile-nav-link px-4 py-3 rounded-lg text-gray-300 hover:text-white hover:bg-stage-800 transition-colors font-medium">Nosotros</a>
+          <a href="#testimonios" class="mobile-nav-link px-4 py-3 rounded-lg text-gray-300 hover:text-white hover:bg-stage-800 transition-colors font-medium">Testimonios</a>
+          <a href="#contacto" class="mobile-nav-link mt-2 mx-4 py-3 rounded-full bg-crimson hover:bg-crimson-light text-white text-center font-semibold transition-colors">Contacto</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ========== HERO SECTION ========== -->
+    <section class="relative min-h-screen flex items-center pt-16 lg:pt-20 overflow-hidden">
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1507924538820-ede94a04019d?w=1920&q=80"
+          alt="Escenario de teatro con luces dramáticas"
+          class="w-full h-full object-cover"
+        >
+        <div class="absolute inset-0 hero-gradient"></div>
+      </div>
+
+      <!-- Decorative elements -->
+      <div class="absolute top-1/4 right-10 w-72 h-72 bg-crimson/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-1/4 left-10 w-96 h-96 bg-amber-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <div class="max-w-3xl">
+          <span class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase text-amber-accent bg-amber-accent/10 border border-amber-accent/20 rounded-full">
+            Talleres abiertos 2026
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight text-white mb-6">
+            El arte de crear
+            <span class="text-gradient"> en el momento.</span>
+            <br>
+            <span class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-200">Descubrí tu potencial arriba del escenario.</span>
+          </h1>
+          <p class="text-lg sm:text-xl text-gray-300 leading-relaxed mb-10 max-w-2xl">
+            Talleres de teatro, actuación e improvisación para todos los niveles. No se requiere experiencia previa.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#contacto" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-crimson hover:bg-crimson-light text-white font-bold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-crimson/40 hover:-translate-y-1">
+              Quiero Inscribirme
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+            <a href="#talleres" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-gray-500 hover:border-amber-accent text-gray-200 hover:text-amber-accent font-semibold text-lg transition-all duration-300">
+              Ver Talleres
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce hidden sm:block">
+        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT US ========== -->
+    <section id="nosotros" class="py-20 lg:py-28 bg-stage-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <!-- Text -->
+          <div>
+            <span class="text-crimson font-semibold text-sm tracking-widest uppercase mb-3 block">Sobre Nosotros</span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+              Donde la creatividad encuentra su escenario
+            </h2>
+            <p class="text-gray-300 text-lg leading-relaxed mb-6">
+              <strong class="text-white">En el Acto</strong> nació de una convicción simple pero poderosa: el teatro no es un privilegio de unos pocos, sino un derecho de todos. Somos una compañía independiente dedicada a explorar la creatividad humana a través del arte escénico, la improvisación y el trabajo colectivo.
+            </p>
+            <p class="text-gray-300 text-lg leading-relaxed mb-6">
+              Creemos que perder el miedo escénico es uno de los regalos más transformadores que podés darte. En nuestros espacios, cada persona —sin importar su edad, profesión o experiencia— encuentra un lugar seguro para experimentar, equivocarse, reír y crecer junto a otros.
+            </p>
+            <p class="text-gray-300 text-lg leading-relaxed mb-8">
+              Más que un taller, construimos una <em class="text-amber-accent not-italic font-medium">comunidad</em> donde las historias se comparten, las voces se escuchan y el escenario se convierte en un espejo de lo que cada uno puede llegar a ser.
+            </p>
+            <div class="flex flex-wrap gap-6">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-crimson/20 flex items-center justify-center">
+                  <svg class="w-6 h-6 text-crimson" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-2xl font-bold text-white">+500</p>
+                  <p class="text-sm text-gray-400">Alumnos formados</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-amber-accent/20 flex items-center justify-center">
+                  <svg class="w-6 h-6 text-amber-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-2xl font-bold text-white">12</p>
+                  <p class="text-sm text-gray-400">Obras estrenadas</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image -->
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-br from-crimson/20 to-amber-accent/10 rounded-2xl blur-2xl"></div>
+            <img
+              src="https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=800&q=80"
+              alt="Ensayo de teatro con luces de escenario"
+              class="relative rounded-2xl w-full h-[400px] lg:h-[500px] object-cover shadow-2xl shadow-black/50"
+            >
+            <div class="absolute -bottom-6 -left-6 bg-stage-800 border border-stage-700 rounded-xl p-5 shadow-xl max-w-xs hidden sm:block">
+              <p class="text-amber-accent font-semibold text-sm mb-1">Nuestra filosofía</p>
+              <p class="text-gray-300 text-sm italic">"El escenario no juzga. Solo espera que te atrevas a subir."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== WORKSHOPS / SERVICES ========== -->
+    <section id="talleres" class="py-20 lg:py-28 bg-stage-950 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-crimson to-transparent"></div>
+        <div class="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-amber-accent to-transparent"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-crimson font-semibold text-sm tracking-widest uppercase mb-3 block">Nuestros Talleres</span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            Encontrá el camino que te inspire
+          </h2>
+          <p class="text-gray-400 text-lg">
+            Tres propuestas diseñadas para distintos niveles y objetivos. Todos incluyen práctica en escenario y acompañamiento personalizado.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Card 1 -->
+          <article class="group bg-stage-800/50 border border-stage-700/50 rounded-2xl overflow-hidden card-glow transition-all duration-300 hover:border-crimson/30 hover:-translate-y-1">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&q=80"
+                alt="Taller de improvisación teatral"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-stage-800 to-transparent"></div>
+              <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-crimson flex items-center justify-center shadow-lg">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="p-6 lg:p-8">
+              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-crimson-light transition-colors">
+                Teatro Inicial e Improvisación
+              </h3>
+              <p class="text-gray-400 leading-relaxed mb-4">
+                El punto de partida perfecto. Juegos teatrales, ejercicios de improvisación y dinámicas grupales para despertar tu espontaneidad, soltar inhibiciones y ganar confianza frente al público.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                <svg class="w-4 h-4 text-amber-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Martes y jueves · 19:00 a 21:00 hs
+              </div>
+              <a href="#contacto" class="inline-flex items-center text-crimson hover:text-crimson-light font-semibold text-sm transition-colors">
+                Consultar cupos
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="group bg-stage-800/50 border border-stage-700/50 rounded-2xl overflow-hidden card-glow transition-all duration-300 hover:border-crimson/30 hover:-translate-y-1">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80"
+                alt="Montaje de obra teatral"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-stage-800 to-transparent"></div>
+              <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-amber-accent flex items-center justify-center shadow-lg">
+                <svg class="w-6 h-6 text-stage-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="p-6 lg:p-8">
+              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-amber-accent transition-colors">
+                Montaje Obra / Avanzados
+              </h3>
+              <p class="text-gray-400 leading-relaxed mb-4">
+                Para quienes quieren vivir la experiencia completa: desde la idea inicial hasta el estreno. Escritura colectiva, dirección, ensayo y función final ante público real en nuestro espacio.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                <svg class="w-4 h-4 text-amber-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Sábados · 10:00 a 14:00 hs · Ciclo semestral
+              </div>
+              <a href="#contacto" class="inline-flex items-center text-crimson hover:text-crimson-light font-semibold text-sm transition-colors">
+                Consultar cupos
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="group bg-stage-800/50 border border-stage-700/50 rounded-2xl overflow-hidden card-glow transition-all duration-300 hover:border-crimson/30 hover:-translate-y-1 md:col-span-2 lg:col-span-1">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80"
+                alt="Entrenamiento actoral"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-stage-800 to-transparent"></div>
+              <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-crimson flex items-center justify-center shadow-lg">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="p-6 lg:p-8">
+              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-crimson-light transition-colors">
+                Entrenamiento Actoral
+              </h3>
+              <p class="text-gray-400 leading-relaxed mb-4">
+                Profundizá en las herramientas del actor: lenguaje corporal, proyección vocal, trabajo emocional y análisis de personaje. Ideal para quienes buscan un nivel técnico más exigente.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                <svg class="w-4 h-4 text-amber-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Miércoles y viernes · 18:00 a 20:30 hs
+              </div>
+              <a href="#contacto" class="inline-flex items-center text-crimson hover:text-crimson-light font-semibold text-sm transition-colors">
+                Consultar cupos
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section id="testimonios" class="py-20 lg:py-28 bg-stage-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-crimson font-semibold text-sm tracking-widest uppercase mb-3 block">Reseñas de Alumnos</span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            Voces que ya subieron al escenario
+          </h2>
+          <p class="text-gray-400 text-lg">
+            Historias reales de personas que transformaron su relación con la creatividad y consigo mismas.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <blockquote class="bg-stage-800/40 border border-stage-700/50 rounded-2xl p-8 relative">
+            <div class="absolute -top-3 left-8 text-6xl text-crimson/30 font-serif leading-none">"</div>
+            <div class="flex items-center gap-4 mb-6">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&q=80"
+                alt="Foto de Valentina Ríos"
+                class="w-14 h-14 rounded-full object-cover ring-2 ring-crimson/30"
+              >
+              <div>
+                <cite class="not-italic font-bold text-white block">Valentina Ríos</cite>
+                <span class="text-sm text-gray-500">Taller de Improvisación · 2025</span>
+              </div>
+            </div>
+            <p class="text-gray-300 leading-relaxed relative z-10">
+              Llegué con las manos sudadas y la voz temblorosa. Hoy doy charlas en mi trabajo sin miedo. En el Acto me enseñó que equivocarse en el escenario es parte del juego, y eso cambió mi vida entera.
+            </p>
+            <div class="flex gap-1 mt-4 text-amber-accent">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+          </blockquote>
+
+          <!-- Testimonial 2 -->
+          <blockquote class="bg-stage-800/40 border border-stage-700/50 rounded-2xl p-8 relative">
+            <div class="absolute -top-3 left-8 text-6xl text-crimson/30 font-serif leading-none">"</div>
+            <div class="flex items-center gap-4 mb-6">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&q=80"
+                alt="Foto de Martín Acosta"
+                class="w-14 h-14 rounded-full object-cover ring-2 ring-crimson/30"
+              >
+              <div>
+                <cite class="not-italic font-bold text-white block">Martín Acosta</cite>
+                <span class="text-sm text-gray-500">Montaje Obra · 2024</span>
+              </div>
+            </div>
+            <p class="text-gray-300 leading-relaxed relative z-10">
+              Participé en el montaje de una obra desde cero y fue la experiencia más intensa y hermosa de mi vida. Ver nuestra creación en el escenario, con público real, me hizo sentir que todo valió la pena. Una familia teatral de verdad.
+            </p>
+            <div class="flex gap-1 mt-4 text-amber-accent">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+          </blockquote>
+
+          <!-- Testimonial 3 -->
+          <blockquote class="bg-stage-800/40 border border-stage-700/50 rounded-2xl p-8 relative md:col-span-2 lg:col-span-1">
+            <div class="absolute -top-3 left-8 text-6xl text-crimson/30 font-serif leading-none">"</div>
+            <div class="flex items-center gap-4 mb-6">
+              <img
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&q=80"
+                alt="Foto de Camila Fernández"
+                class="w-14 h-14 rounded-full object-cover ring-2 ring-crimson/30"
+              >
+              <div>
+                <cite class="not-italic font-bold text-white block">Camila Fernández</cite>
+                <span class="text-sm text-gray-500">Entrenamiento Actoral · 2025</span>
+              </div>
+            </div>
+            <p class="text-gray-300 leading-relaxed relative z-10">
+              Soy docente y siempre me costó expresar emociones frente a otros. El entrenamiento actoral me dio herramientas concretas: cómo usar mi cuerpo, mi voz y mi mirada. Ahora me siento más presente en todo lo que hago, no solo en el teatro.
+            </p>
+            <div class="flex gap-1 mt-4 text-amber-accent">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT FORM ========== -->
+    <section id="contacto" class="py-20 lg:py-28 bg-stage-950 relative overflow-hidden">
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1547159415-8409e273d5e2?w=1920&q=80"
+          alt="Fondo de teatro"
+          class="w-full h-full object-cover opacity-10"
+        >
+      </div>
+
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center mb-12">
+          <span class="text-crimson font-semibold text-sm tracking-widest uppercase mb-3 block">Sumate a la Compañía</span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            Tu escenario te espera
+          </h2>
+          <p class="text-gray-400 text-lg">
+            Completá el formulario y nos pondremos en contacto para contarte horarios, valores y próximas fechas de inicio.
+          </p>
+        </div>
+
+        <form class="bg-stage-800/60 backdrop-blur-sm border border-stage-700/50 rounded-2xl p-8 sm:p-10 shadow-2xl shadow-black/30" onsubmit="event.preventDefault(); alert('¡Gracias por tu consulta! Nos comunicaremos contigo pronto.');">
+          <div class="space-y-6">
+            <!-- Full Name -->
+            <div>
+              <label for="nombre" class="block text-sm font-medium text-gray-300 mb-2">Nombre completo</label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                required
+                placeholder="Ej: María González"
+                class="w-full px-4 py-3 rounded-xl bg-stage-900 border border-stage-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-crimson focus:border-transparent transition-all"
+              >
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Correo electrónico</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="tu@email.com"
+                class="w-full px-4 py-3 rounded-xl bg-stage-900 border border-stage-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-crimson focus:border-transparent transition-all"
+              >
+            </div>
+
+            <!-- Workshop Select -->
+            <div>
+              <label for="taller" class="block text-sm font-medium text-gray-300 mb-2">Taller de interés</label>
+              <select
+                id="taller"
+                name="taller"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-stage-900 border border-stage-700 text-white focus:outline-none focus:ring-2 focus:ring-crimson focus:border-transparent transition-all appearance-none cursor-pointer"
+                style="background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%239ca3af%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpath d=%27M6 9l6 6 6-6%27/%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1.25rem;"
+              >
+                <option value="" disabled selected>Seleccioná un taller</option>
+                <option value="inicial">Teatro Inicial e Improvisación</option>
+                <option value="montaje">Montaje Obra / Avanzados</option>
+                <option value="entrenamiento">Entrenamiento Actoral</option>
+                <option value="otro">Otro / Consulta general</option>
+              </select>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label for="mensaje" class="block text-sm font-medium text-gray-300 mb-2">Mensaje</label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="4"
+                placeholder="Contanos qué te motiva a sumarte, tu experiencia previa o cualquier duda que tengas..."
+                class="w-full px-4 py-3 rounded-xl bg-stage-900 border border-stage-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-crimson focus:border-transparent transition-all resize-none"
+              ></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              class="w-full py-4 px-8 rounded-xl bg-crimson hover:bg-crimson-light text-white font-bold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-crimson/40 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-crimson focus:ring-offset-2 focus:ring-offset-stage-800"
+            >
+              Enviar Consulta
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-stage-900 border-t border-stage-700/50 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <!-- Brand -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-crimson to-amber-accent flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <div>
+            <span class="block font-bold text-white">En el Acto</span>
+            <span class="block text-xs text-gray-500">Teatro Independiente</span>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex items-center gap-4">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-stage-800 border border-stage-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-crimson hover:bg-crimson/10 transition-all duration-300" aria-label="Instagram">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-stage-800 border border-stage-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-crimson hover:bg-crimson/10 transition-all duration-300" aria-label="Facebook">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-stage-800 border border-stage-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-crimson hover:bg-crimson/10 transition-all duration-300" aria-label="YouTube">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-sm text-gray-500 text-center md:text-right">
+          © 2026 En el Acto Teatro Independiente. Todos los derechos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== INLINE JAVASCRIPT ========== -->
+  <script>
+    (function () {
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-open');
+      const iconClose = document.getElementById('icon-close');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+      function closeMenu() {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+
+      function openMenu() {
+        mobileMenu.classList.remove('hidden');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+        menuToggle.setAttribute('aria-expanded', 'true');
+      }
+
+      menuToggle.addEventListener('click', function () {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      mobileNavLinks.forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 768) {
+          closeMenu();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
