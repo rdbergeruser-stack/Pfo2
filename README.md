@@ -10,7 +10,7 @@
 
 ## 🚀 Despliegue (Deploy)
 El proyecto se encuentra unificado y desplegado en la plataforma Vercel a través del siguiente enlace:
-* **Link al Deploy:** https://pfo2-eight.vercel.app/
+* **Link al Deploy:** https://pfo-2-front-rodrigo-berger.vercel.app/
 
 ---
 
